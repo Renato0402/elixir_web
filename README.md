@@ -1,4 +1,4 @@
-# ElixirWeb
+# Elixir Web
 
 To start your Phoenix server:
 
