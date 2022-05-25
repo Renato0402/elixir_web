@@ -34,3 +34,6 @@ npm-debug.log
 
 # Historico
 .history
+
+# Elixir ls extension
+.elixir_ls
