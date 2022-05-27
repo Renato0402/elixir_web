@@ -18,6 +18,14 @@ defmodule ElixirWebWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    get "/receitas", ReceitasController, :index
+
+    get "/despesas", DespesasController, :index
+
+    get "/receitas/:nome", ReceitasController, :index
+
+    get "/despesas/:nome", DespesasController, :index
   end
 
   # Other scopes may use custom stacks.
