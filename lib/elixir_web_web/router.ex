@@ -26,6 +26,9 @@ defmodule ElixirWebWeb.Router do
     get "/receitas/:nome", ReceitasController, :index
 
     get "/despesas/:nome", DespesasController, :index
+
+    get "/login", LoginController, :index
+
   end
 
   # Other scopes may use custom stacks.
