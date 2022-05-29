@@ -1,1 +1,13 @@
-<h1>Login do <%= @nome %>!</h1>
+<h1 id="titulo" class="mt-5 text-center">Você deve fazer login para gerenciar suas receitas e despesas.</h1>
+
+<div class="container__box">
+  <div class="container__son">
+    <div id="card" class="card text-center" style="width: 18rem;">
+      <img src={Routes.static_path(@conn, "/images/person.png")} class="card-img-top mt-3 w-50 rounded mx-auto d-block">
+      <div class="card-body">
+        <a href={ Routes.login_path(@conn, :new)} class="btn btn-primary">Login</a>
+        <a href={ Routes.cadastro_path(@conn, :new)} class="btn btn-primary">Cadastro</a>
+      </div>
+    </div>
+  </div>
+</div>

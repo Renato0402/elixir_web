@@ -21,13 +21,33 @@ defmodule ElixirWebWeb.Router do
 
     get "/receitas", ReceitasController, :index
 
+    get "/receitas/new", ReceitasController, :new
+
+    get "/receitas/edit", ReceitasController, :edit
+
+    get "/receitas/:idUser", ReceitasController, :index
+
+    get "/receitas/:idUser/new", ReceitasController, :new
+
+    get "/receitas/:idUser/edit/:id", ReceitasController, :edit
+
     get "/despesas", DespesasController, :index
 
-    get "/receitas/:nome", ReceitasController, :index
+    get "/despesas/new", DespesasController, :new
 
-    get "/despesas/:nome", DespesasController, :index
+    get "/despesas/edit", DespesasController, :edit
+
+    get "/despesas/:idUser", DespesasController, :index
+
+    get "/despesas/:idUser/new", DespesasController, :new
+
+    get "/despesas/:idUser/edit/:id", DespesasController, :edit
 
     get "/login", LoginController, :index
+
+    get "/login/new", LoginController, :new
+
+    get "/cadastro", CadastroController, :new
 
   end
 

@@ -1,1 +1,35 @@
-<h1>Receitas do <%= @nome %>!</h1>
+<div class="cabecalho">
+
+    <h1>Receitas</h1>
+
+    <a class="btn btn-success botAdd" href={ Routes.receitas_path(@conn, :new)}>Adicionar</a>
+
+</div>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Valor</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="registro">
+        <th scope="row">1</th>
+        <td>Victor Torres</td>
+        <td>kkkkk@gmail.com</td>
+        <td><a class="btn btn-primary" href={ Routes.receitas_path(@conn, :edit)}>Editar</a></td>
+        <td><button type="button" class="btn btn-danger exclusao">Exlcuir</button></td>
+      </tr>
+      <tr class="registro">
+        <th scope="row">2</th>
+        <td>Renato Vidal</td>
+        <td>kkkkk@hotmail.com</td>
+        <td><a class="btn btn-primary" href={ Routes.receitas_path(@conn, :edit)}>Editar</a></td>
+        <td><button type="button" class="btn btn-danger exclusao">Excluir</button></td>
+      </tr>
+    </tbody>
+  </table>

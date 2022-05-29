@@ -8,11 +8,13 @@
     <%= live_title_tag assigns[:page_title] || "Gestão Financeira" %>
     <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/bootstrap.min.css")}/>
     <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/signin.css")}/>
+    <link rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/style.css")}/>
   </head>
   <body class="d-flex flex-column h-100">
-    <%= render("header.html")%>
+    <%= render("header.html", conn: @conn)%>
     <%= @inner_content %>
     <%= render("footer.html")%>
     <script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/bootstrap.min.js")}></script>
+    <script type="text/javascript" src={Routes.static_path(@conn, "/assets/js/main.js")}></script>
   </body>
 </html>
