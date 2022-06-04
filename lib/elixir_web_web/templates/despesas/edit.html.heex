@@ -1,4 +1,2 @@
 <h1 class="mt-5 mb-5">Editar Despesa</h1>
-<form method="POST" action="#">
-  <%= render("form.html") %>
-</form>
+<%= render("form.html", Map.put(assigns, :action, Routes.despesas_path(@conn, :update)))  %>

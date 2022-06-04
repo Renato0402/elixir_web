@@ -47,7 +47,19 @@ defmodule ElixirWebWeb.Router do
 
     get "/login/new", LoginController, :new
 
-    get "/cadastro", CadastroController, :new
+    get "/cadastro/new", CadastroController, :new
+
+
+    post "/cadastro/create", CadastroController, :create
+
+    post "/receitas/create", ReceitasController, :create
+
+    post "/despesas/create", DespesasController, :create
+
+    post "/receitas/update", ReceitasController, :update
+
+    post "/despesas/update", DespesasController, :update
+
 
   end
 
