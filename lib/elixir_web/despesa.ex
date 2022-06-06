@@ -14,7 +14,7 @@ defmodule ElixirWeb.Despesa do
   @doc false
   def changeset(despesa, attrs) do
     despesa
-    |> cast(attrs, [:nome, :valor])
+    |> cast(attrs, [:nome, :valor, :user_id])
     |> validate_required([:nome, :valor])
   end
 end

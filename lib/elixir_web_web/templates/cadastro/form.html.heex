@@ -1,23 +1,46 @@
-<div class="row mb-3">
+<.form let={f} for={@changeset} action={@action}>
+
+  <%= if @changeset.action do %>
+
+    <div class="alert alert-danger">
+
+      <p>Verifique os Campos Novamente!</p>
+
+    </div>
+
+  <% end %>
+
+  <div class="row mb-3">
     <div class="col">
-      <label for="inputName" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="inputName" name="name"/>
+      <%= label f, "Nome", class: "form-label", for: "inputName" %>
+      <%= text_input f, :nome, class: "form-control", id: "inputName", value: input_value(f, :nome) %>
+
+      <%= error_tag f, :nome %>
     </div>
     <div class="col">
-      <label for="inputEmail" class="form-label">Email</label>
-      <input type="text" class="form-control" id="inputEmail" name="email"/>
+      <%= label f, "Email", class: "form-label", for: "inputEmail" %>
+      <%= text_input f, :email, class: "form-control", id: "inputEmail", value: input_value(f, :email) %>
+
+      <%= error_tag f, :email %>
     </div>
   </div>
   
   <div class="row mb-3">
     <div class="col">
-      <label for="inputPassword" class="form-label">Senha</label>
-      <input type="password" class="form-control" id="inputPassword" name="password"/>
+      <%= label f, "Senha:", class: "form-label", for: "inputPassword" %>
+      <%= password_input f, :senha, class: "form-control", id: "inputPassword", value: input_value(f, :senha) %>
+
+      <%= error_tag f, :senha %>
     </div>
     <div class="col">
-      <label for="inputPasswordConfirmation" class="form-label">Confirmação Senha</label>
-      <input type="password" class="form-control" id="inputPasswordConfirmation" name="passwordConfirmation"/>
+      <%= label f, "Confirmação de Senha:", class: "form-label", for: "inputPasswordConfirmation" %>
+      <%= password_input f, :senha_confirmation, class: "form-control", id: "inputPasswordConfirmation", value: input_value(f, :senha_confirmation) %>
+
+      <%= error_tag f, :senha_confirmation %>
     </div>
   </div>
   
-  <button type="submit" class="btn btn-primary">Salvar</button>
+  <%= submit "Salvar", class: "btn btn-primary" %>
+
+</.form>
+

@@ -17,19 +17,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="registro">
-        <th scope="row">1</th>
-        <td>Victor Torres</td>
-        <td>kkkkk@gmail.com</td>
-        <td><a class="btn btn-primary" href={ Routes.despesas_path(@conn, :edit)}>Editar</a></td>
-        <td><button type="button" class="btn btn-danger exclusao">Exlcuir</button></td>
-      </tr>
-      <tr class="registro">
-        <th scope="row">2</th>
-        <td>Renato Vidal</td>
-        <td>kkkkk@hotmail.com</td>
-        <td><a class="btn btn-primary" href={ Routes.despesas_path(@conn, :edit)}>Editar</a></td>
-        <td><button type="button" class="btn btn-danger exclusao">Excluir</button></td>
-      </tr>
+      <%= for d <- @despesas do %>
+        <tr class="registro">
+          <th scope="row"><%= d.id %></th>
+          <td><%= d.nome %></td>
+          <td><%= d.valor %></td>
+          <td>
+            <%= link("Editar", to: Routes.despesas_path(@conn, :edit), class: "btn btn-primary") %>
+          </td>
+          <td>
+            <%= button("Excluir", to: Routes.despesas_path(@conn, :delete), method: :delete, class: "btn btn-danger exclusao") %>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
   </table>

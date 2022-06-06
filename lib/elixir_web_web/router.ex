@@ -19,17 +19,13 @@ defmodule ElixirWebWeb.Router do
 
     get "/", PageController, :index
 
+
     get "/receitas", ReceitasController, :index
 
     get "/receitas/new", ReceitasController, :new
 
     get "/receitas/edit", ReceitasController, :edit
 
-    get "/receitas/:idUser", ReceitasController, :index
-
-    get "/receitas/:idUser/new", ReceitasController, :new
-
-    get "/receitas/:idUser/edit/:id", ReceitasController, :edit
 
     get "/despesas", DespesasController, :index
 
@@ -37,11 +33,6 @@ defmodule ElixirWebWeb.Router do
 
     get "/despesas/edit", DespesasController, :edit
 
-    get "/despesas/:idUser", DespesasController, :index
-
-    get "/despesas/:idUser/new", DespesasController, :new
-
-    get "/despesas/:idUser/edit/:id", DespesasController, :edit
 
     get "/login", LoginController, :index
 
@@ -50,15 +41,22 @@ defmodule ElixirWebWeb.Router do
     get "/cadastro/new", CadastroController, :new
 
 
+    post "/login/new", LoginController, :auth
     post "/cadastro/create", CadastroController, :create
+
 
     post "/receitas/create", ReceitasController, :create
 
-    post "/despesas/create", DespesasController, :create
-
     post "/receitas/update", ReceitasController, :update
 
+    delete "/receitas/delete", ReceitasController, :delete
+
+
+    post "/despesas/create", DespesasController, :create
+
     post "/despesas/update", DespesasController, :update
+
+    delete "/despesas/delete", DespesasController, :delete
 
 
   end

@@ -1,24 +1,69 @@
+import Ecto.Query
+
 defmodule ElixirWebWeb.ReceitasController do
+
   use ElixirWebWeb, :controller
 
-  def edit(conn, %{"idUser" => idUser, "id" => id}) do
-    render(conn, "edit.html", idUser: idUser, id: id)
-  end
-
-  def index(conn, %{"idUser" => idUser}) do
-    render(conn, "index.html", idUser: idUser)
-  end
+  alias ElixirWeb.Repo
+  alias ElixirWeb.User
+  alias ElixirWeb.Receita
 
   def edit(conn, _params) do
-    render(conn, "edit.html", idUser: "0", id: "0")
-  end
-
-  def index(conn, _params) do
-    render(conn, "index.html", idUser: "0")
+    changeset = Receita.changeset(%Receita{}, %{})
+    render(conn, "edit.html", changeset: changeset)
   end
 
   def new(conn, _params) do
-    render(conn, "new.html", idUser: "0")
+    changeset = Receita.changeset(%Receita{}, %{})
+    render(conn, "new.html", changeset: changeset)
   end
-  
+
+  def index(conn, _params) do
+
+    user_id = get_session(conn, :current_user_id)
+
+    query = from r in Receita,
+      where: r.user_id == ^user_id
+
+    receitas = Repo.all(query)
+
+    render(conn, "index.html", receitas: receitas)
+
+  end
+
+
+
+  def create(conn, %{"receita" => receita}) do
+
+    user_id = get_session(conn, :current_user_id)
+
+    receita = Map.merge(receita, %{"user_id" => user_id})
+
+    changeset = Receita.changeset(%Receita{}, receita)
+
+    case Repo.insert(changeset) do
+
+      {:ok, receita} ->
+        conn
+        |> put_flash(:info, "Receita cadastrada com sucesso!")
+        |> redirect(to: Routes.receitas_path(conn, :index))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        changeset = %{changeset | action: :check_errors}
+        render(conn, "new.html", changeset: changeset)
+
+    end
+
+  end
+
+  def update(conn, %{"user" => user}) do
+
+
+  end
+
+  def delete(conn, %{"user" => user}) do
+
+
+  end
+
 end

@@ -9,12 +9,13 @@ defmodule ElixirWeb.Receita do
     belongs_to :user, ElixirWeb.User
 
     timestamps()
+
   end
 
   @doc false
   def changeset(receita, attrs) do
     receita
-    |> cast(attrs, [:nome, :valor])
+    |> cast(attrs, [:nome, :valor, :user_id])
     |> validate_required([:nome, :valor])
   end
 end
