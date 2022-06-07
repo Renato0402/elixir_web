@@ -23,7 +23,7 @@
           <td><%= r.nome %></td>
           <td><%= r.valor %></td>
           <td>
-            <%= link("Editar", to: Routes.receitas_path(@conn, :edit), class: "btn btn-primary") %>
+            <%= link("Editar", to: Routes.receitas_path(@conn, :edit), class: "btn btn-primary edicao") %>
           </td>
           <td>
             <%= button("Excluir", to: Routes.receitas_path(@conn, :delete), method: :delete, class: "btn btn-danger exclusao") %>

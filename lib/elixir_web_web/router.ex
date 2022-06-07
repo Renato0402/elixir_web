@@ -27,11 +27,13 @@ defmodule ElixirWebWeb.Router do
     get "/receitas/edit", ReceitasController, :edit
 
 
+
     get "/despesas", DespesasController, :index
 
     get "/despesas/new", DespesasController, :new
 
     get "/despesas/edit", DespesasController, :edit
+
 
 
     get "/login", LoginController, :index

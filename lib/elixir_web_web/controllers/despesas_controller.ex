@@ -55,16 +55,37 @@ defmodule ElixirWebWeb.DespesasController do
 
   def update(conn, %{"despesa" => despesa}) do
 
-    despesa = Repo.get_by(Despesa, nome: despesa["nome"], valor: despesa["valor"])
+    id = conn.cookies["item_to_update"]
 
+    despesaReal = Repo.get_by(Despesa, id: id)
 
+    changeset = Ecto.Changeset.change(despesaReal, %{nome: despesa["nome"], valor: despesa["valor"]})
+
+    # changeset = Despesa.changeset(%Despesa{}, despesa)
+
+    # changeset = changeset.change(despesaReal, %{nome: despesa["nome"], valor: despesa["valor"]})
+
+    case Repo.update(changeset) do
+
+      {:ok,despesa} ->
+        conn
+        |> put_flash(:info, "Despesa atualizada com sucesso!")
+        |> redirect(to: Routes.despesas_path(conn, :index))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        changeset = %{changeset | action: :check_errors}
+        render(conn, "edit.html", changeset: changeset)
+
+    end
 
 
   end
 
-  def delete(conn, %{"despesa" => despesa}) do
+  def delete(conn, _params) do
 
-    despesa = Repo.get_by(Despesa, nome: despesa["nome"], valor: despesa["valor"])
+    id = conn.cookies["item_to_delete"]
+
+    despesa = Repo.get_by(Despesa, id: id)
 
     case Repo.delete(despesa) do
 
@@ -78,6 +99,7 @@ defmodule ElixirWebWeb.DespesasController do
         |> redirect(to: Routes.despesas_path(conn, :index))
 
     end
+
 
   end
 

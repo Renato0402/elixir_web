@@ -56,12 +56,51 @@ defmodule ElixirWebWeb.ReceitasController do
 
   end
 
-  def update(conn, %{"user" => user}) do
+  def update(conn, %{"receita" => receita}) do
 
+    id = conn.cookies["item_to_update"]
+
+    receitaReal = Repo.get_by(Receita, id: id)
+
+    changeset = Ecto.Changeset.change(receitaReal, %{nome: receita["nome"], valor: receita["valor"]})
+
+    # changeset = Receita.changeset(%Receita{},receita)
+
+    # changeset = changeset.change(receitaReal, %{nome: receita["nome"], valor: receita["valor"]})
+
+    case Repo.update(changeset) do
+
+      {:ok,receita} ->
+        conn
+        |> put_flash(:info, "Receita atualizada com sucesso!")
+        |> redirect(to: Routes.receitas_path(conn, :index))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        changeset = %{changeset | action: :check_errors}
+        render(conn, "edit.html", changeset: changeset)
+
+    end
 
   end
 
-  def delete(conn, %{"user" => user}) do
+  def delete(conn, _params) do
+
+    id = conn.cookies["item_to_delete"]
+
+    receita = Repo.get_by(Receita, id: id)
+
+    case Repo.delete(receita) do
+
+      {:ok,receita} ->
+        conn
+        |> put_flash(:info, "Receita deletada com sucesso!")
+        |> redirect(to: Routes.receitas_path(conn, :index))
+
+      {:error, _} ->
+        conn
+        |> redirect(to: Routes.receitas_path(conn, :index))
+
+    end
 
 
   end
