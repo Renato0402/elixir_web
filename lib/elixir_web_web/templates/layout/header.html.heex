@@ -2,7 +2,9 @@
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href={ Routes.page_path(@conn, :index)}>Gestão Financeira</a>
+        <a class="navbar-brand" href={ Routes.page_path(@conn, :index)}>
+          <img src={Routes.static_path(@conn, "/images/favicon.png")} alt="favicon" width="30px" height="30px">
+          <span style="margin-left: 3px;">Gestão Financeira</span></a>
   
         <div>
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
@@ -13,10 +15,10 @@
               <a class="nav-link" href={ Routes.login_path(@conn, :index)}>Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href={ Routes.receitas_path(@conn, :index)}>Receitas</a>
+              <a class="nav-link disabled" href={ Routes.receitas_path(@conn, :index)}>Receitas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href={ Routes.despesas_path(@conn, :index)}>Despesas</a>
+              <a class="nav-link disabled" href={ Routes.despesas_path(@conn, :index)}>Despesas</a>
             </li>
           </ul>
         </div>
