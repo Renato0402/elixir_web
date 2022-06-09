@@ -5,7 +5,6 @@ defmodule ElixirWebWeb.ReceitasController do
   use ElixirWebWeb, :controller
 
   alias ElixirWeb.Repo
-  alias ElixirWeb.User
   alias ElixirWeb.Receita
 
   def edit(conn, _params) do
@@ -43,7 +42,7 @@ defmodule ElixirWebWeb.ReceitasController do
 
     case Repo.insert(changeset) do
 
-      {:ok, receita} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "Receita cadastrada com sucesso!")
         |> redirect(to: Routes.receitas_path(conn, :index))
@@ -70,7 +69,7 @@ defmodule ElixirWebWeb.ReceitasController do
 
     case Repo.update(changeset) do
 
-      {:ok,receita} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "Receita atualizada com sucesso!")
         |> redirect(to: Routes.receitas_path(conn, :index))
@@ -91,7 +90,7 @@ defmodule ElixirWebWeb.ReceitasController do
 
     case Repo.delete(receita) do
 
-      {:ok,receita} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "Receita deletada com sucesso!")
         |> redirect(to: Routes.receitas_path(conn, :index))

@@ -5,7 +5,6 @@ defmodule ElixirWebWeb.DespesasController do
   use ElixirWebWeb, :controller
 
   alias ElixirWeb.Repo
-  alias ElixirWeb.User
   alias ElixirWeb.Despesa
 
   def edit(conn, _params) do
@@ -40,7 +39,7 @@ defmodule ElixirWebWeb.DespesasController do
 
     case Repo.insert(changeset) do
 
-      {:ok,despesa} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "Despesa cadastrada com sucesso!")
         |> redirect(to: Routes.despesas_path(conn, :index))
@@ -67,7 +66,7 @@ defmodule ElixirWebWeb.DespesasController do
 
     case Repo.update(changeset) do
 
-      {:ok,despesa} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "Despesa atualizada com sucesso!")
         |> redirect(to: Routes.despesas_path(conn, :index))
@@ -89,7 +88,7 @@ defmodule ElixirWebWeb.DespesasController do
 
     case Repo.delete(despesa) do
 
-      {:ok,despesa} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "Despesa deletada com sucesso!")
         |> redirect(to: Routes.despesas_path(conn, :index))
