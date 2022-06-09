@@ -18,6 +18,7 @@ defmodule ElixirWebWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    delete "/delete", PageController, :delete
 
 
     get "/receitas", ReceitasController, :index
