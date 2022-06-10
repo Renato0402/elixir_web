@@ -1,4 +1,4 @@
-<.form let={f} for={@changeset} action={@action}>
+<.form let={f} for={@changeset}, method="put" action={@action}>
 
   <%= if @changeset.action do %>
 
@@ -10,21 +10,23 @@
 
   <% end %>
 
-  <div class="row mb-3">
-    <div class="col">
-      <%= label f, "Nome:", class: "form-label", for: "inputName" %>
-      <%= text_input f, :nome, class: "form-control", id: "inputName", value: input_value(f, :nome) %>
+  <div class="row mb-3 form">
+    
+    <%= label f, "Nome:", class: "form-label label", for: "inputName" %>
+    <%= text_input f, :nome, class: "form-control input", id: "inputName", value: input_value(f, :nome) %>
 
-      <%= error_tag f, :nome %>
-    </div>
-    <div class="col">
-      <%= label f, "Valor:", class: "form-label", for: "inputValue" %>
-      <%= text_input f, :valor, class: "form-control", id: "inputValue", value: input_value(f, :valor) %>
+    <%= error_tag f, :nome %>
+  
+  
+    <%= label f, "Valor:", class: "form-label label", for: "inputValue" %>
+    <%= text_input f, :valor, class: "form-control input", id: "inputValue", value: input_value(f, :valor) %>
 
-      <%= error_tag f, :valor %>
-    </div>
+    <%= error_tag f, :valor %>
+
+    <%= submit "Salvar", class: "btn btn-primary botao" %>
+    
   </div>
 
-  <%= submit "Salvar", class: "btn btn-primary" %>
+  
 
 </.form>

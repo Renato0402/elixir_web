@@ -60,9 +60,7 @@ defmodule ElixirWebWeb.DespesasController do
 
     changeset = Ecto.Changeset.change(despesaReal, %{nome: despesa["nome"], valor: despesa["valor"]})
 
-    # changeset = Despesa.changeset(%Despesa{}, despesa)
-
-    # changeset = changeset.change(despesaReal, %{nome: despesa["nome"], valor: despesa["valor"]})
+    changeset = Ecto.Changeset.validate_required(changeset, [:nome, :valor])
 
     case Repo.update(changeset) do
 

@@ -21,7 +21,7 @@
         <tr class="registro">
           <th scope="row"><%= d.id %></th>
           <td><%= d.nome %></td>
-          <td><%= d.valor %></td>
+          <td>R$ <%= d.valor %></td>
           <td>
             <%= link("Editar", to: Routes.despesas_path(@conn, :edit), class: "btn btn-primary edicao") %>
           </td>

@@ -10,21 +10,21 @@
 
   <% end %>
 
-  <div class="row mb-3">
-    <div class="col">
-      <%= label f, "Email:", class: "form-label", for: "inputEmail" %>
-      <%= text_input f, :email, class: "form-control", id: "inputEmail", value: input_value(f, :email) %>
+  <div class="row mb-3 form">
 
-      <%= error_tag f, :email %>
-    </div>
-    <div class="col">
-      <%= label f, "Senha:", class: "form-label", for: "inputPassword" %>
-      <%= password_input f, :senha, class: "form-control", id: "inputPassword", value: input_value(f, :senha) %>
+    <%= label f, "Email:", class: "form-label label", for: "inputEmail" %>
+    <%= text_input f, :email, class: "form-control input", id: "inputEmail", value: input_value(f, :email) %>
 
-      <%= error_tag f, :senha %>
-    </div>
+    <%= error_tag f, :email %>
+    
+    
+    <%= label f, "Senha:", class: "form-label label", for: "inputPassword" %>
+    <%= password_input f, :senha, class: "form-control input", id: "inputPassword", value: input_value(f, :senha) %>
+
+    <%= error_tag f, :senha %>
+
+    <%= submit "Entrar", class: "btn btn-primary botao" %>
+
   </div>
-
-  <%= submit "Salvar", class: "btn btn-primary" %>
 
 </.form>

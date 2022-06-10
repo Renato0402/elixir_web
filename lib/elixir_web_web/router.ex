@@ -50,14 +50,14 @@ defmodule ElixirWebWeb.Router do
 
     post "/receitas/create", ReceitasController, :create
 
-    post "/receitas/update", ReceitasController, :update
+    put "/receitas/update", ReceitasController, :update
 
     delete "/receitas/delete", ReceitasController, :delete
 
 
     post "/despesas/create", DespesasController, :create
 
-    post "/despesas/update", DespesasController, :update
+    put "/despesas/update", DespesasController, :update
 
     delete "/despesas/delete", DespesasController, :delete
 

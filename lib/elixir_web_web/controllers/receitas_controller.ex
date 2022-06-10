@@ -63,9 +63,7 @@ defmodule ElixirWebWeb.ReceitasController do
 
     changeset = Ecto.Changeset.change(receitaReal, %{nome: receita["nome"], valor: receita["valor"]})
 
-    # changeset = Receita.changeset(%Receita{},receita)
-
-    # changeset = changeset.change(receitaReal, %{nome: receita["nome"], valor: receita["valor"]})
+    changeset = Ecto.Changeset.validate_required(changeset, [:nome, :valor])
 
     case Repo.update(changeset) do
 
