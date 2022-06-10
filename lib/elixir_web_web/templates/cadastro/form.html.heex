@@ -12,13 +12,13 @@
 
   <div class="row mb-3 form">
   
-    <%= label f, "Nome", class: "form-label label", for: "inputName" %>
+    <%= label f, "Nome:", class: "form-label label", for: "inputName" %>
     <%= text_input f, :nome, class: "form-control input", id: "inputName", value: input_value(f, :nome) %>
 
     <%= error_tag f, :nome %>
   
   
-    <%= label f, "Email", class: "form-label label", for: "inputEmail" %>
+    <%= label f, "Email:", class: "form-label label", for: "inputEmail" %>
     <%= text_input f, :email, class: "form-control input", id: "inputEmail", value: input_value(f, :email) %>
 
     <%= error_tag f, :email %>
