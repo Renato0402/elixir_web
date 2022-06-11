@@ -1,0 +1,32 @@
+<.form let={f} for={@changeset}, method="post" action={@action}>
+
+  <%= if @changeset.action do %>
+
+    <div class="alert alert-danger">
+
+      <p>Verifique os Campos Novamente!</p>
+
+    </div>
+
+  <% end %>
+
+  <div class="row mb-3 form">
+    
+    <%= label f, "Nome:", class: "form-label label", for: "inputName" %>
+    <%= text_input f, :nome, class: "form-control input", id: "inputName", value: input_value(f, :nome) %>
+
+    <%= error_tag f, :nome %>
+  
+  
+    <%= label f, "Valor:", class: "form-label label", for: "inputValue" %>
+    <%= text_input f, :valor, class: "form-control input", id: "inputValue", value: input_value(f, :valor) %>
+
+    <%= error_tag f, :valor %>
+
+    <%= submit "Salvar", class: "btn btn-primary botao" %>
+    
+  </div>
+
+  
+
+</.form>
